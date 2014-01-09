@@ -6,6 +6,7 @@ public class MasterController : MonoBehaviour {
 	const float MSG_HEIGHT = 0.2f;	
 	public static GameState state = GameState.STARTED;
 	static string endMessage = null;
+
 	public static void endGame(bool win, string endMessage) {
 		if (win) 
 		{
@@ -19,10 +20,10 @@ public class MasterController : MonoBehaviour {
 	}
 
 
-	string GetEndGameMessage() {
+	public static string GetEndGameMessage() {
 		string message;
 		if (state == GameState.WON) {
-			message = "Congratulations, you have won!";
+			message = "You've escaped the floor!";
 		} else {
 			if (endMessage != null) {
 				message = string.Format(endMessage);
@@ -56,10 +57,8 @@ public class MasterController : MonoBehaviour {
 
 	void OnGUI() {
 		if (state != GameState.STARTED) {
-
 		GUILayout.Window (0, new Rect((Screen.width - Screen.width * MSG_WIDTH)/2.0f, (Screen.height - Screen.height * MSG_HEIGHT)/2.0f, Screen.width * MSG_WIDTH, Screen.height * MSG_HEIGHT),
 			        EndGameWindow, "");
-
 
 		}
 	}
