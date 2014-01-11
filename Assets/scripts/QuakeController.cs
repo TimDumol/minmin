@@ -3,9 +3,9 @@ using System.Collections;
 
 public class QuakeController : MonoBehaviour {
 
-	const int TICKS_PER_SHAKE = 5;
-	const float INTENSITY = 1.5f;
-	const float SHAKEINTENSITY = 0.5f;
+	const int TICKS_PER_SHAKE = 25;
+	const float INTENSITY = 5f;
+	const float SHAKEINTENSITY = 5f;
 	int tick_num;
 
 	// Use this for initialization
@@ -23,15 +23,16 @@ public class QuakeController : MonoBehaviour {
 			GameObject[] objects = GameObject.FindGameObjectsWithTag("SceneObject");
 			GameObject[] shakeObjects = GameObject.FindGameObjectsWithTag("ShakeSceneObject");
 
-			Vector3 vectorForShakeObject = new Vector3(Random.Range (-SHAKEINTENSITY, SHAKEINTENSITY), 0, 1);
+			Vector3 vectorForShakeObject = new Vector3(Random.Range (-SHAKEINTENSITY, SHAKEINTENSITY), 0, Random.Range (-SHAKEINTENSITY, SHAKEINTENSITY));
 
 			foreach (GameObject obj in objects) {
-				print (obj.name);
+				obj.transform.parent.rigidbody.velocity = Vector3.zero;
 				obj.transform.parent.rigidbody.AddForce(new Vector3(Random.Range (-INTENSITY, INTENSITY), Random.Range (-INTENSITY, INTENSITY), Random.Range (-INTENSITY, INTENSITY)/6.0f), ForceMode.Impulse);
 			}
 
 			foreach (GameObject sObj in shakeObjects) {
-				print (sObj.name);
+				sObj.transform.parent.rigidbody.velocity = Vector3.zero;
+
 				sObj.transform.parent.rigidbody.AddForce(vectorForShakeObject, ForceMode.Impulse);
 			}
 		}

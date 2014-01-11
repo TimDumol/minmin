@@ -13,14 +13,26 @@ public class Player : MonoBehaviour {
 
 	}
 
-	void OnControllerColliderHit(ControllerColliderHit collision) {
+	void OnCollisionEnter(Collision collision) {
 		GameObject obj = collision.gameObject;
-		print ("Collided with " + obj.name);
+		Vector3 relativeVelocityVector = collision.relativeVelocity;
+		if (relativeVelocityVector.sqrMagnitude > 5) {
+			print ("COLLISIONENTER" + this.name + " collided with " + obj.name + "at a magnitude of " + relativeVelocityVector.sqrMagnitude);
+			MasterController.endGame (false, "You have been crushed by falling objects.");
+		}
+
+	}
+
+	void OnControllerColliderHit(ControllerColliderHit controllerColliderHit) {
+		GameObject obj = controllerColliderHit.gameObject;
+
+		/**
 		if (obj.name == "boulder") {
 			MasterController.endGame (false, "A boulder has crushed you and reduced you to nothing but organs.");
 		}
-		else if (obj.name == "Door") {
+		else */ if (obj.name == "Door") {
 			MasterController.endGame (true, null);
 		}
     }
+
 }
