@@ -1,0 +1,276 @@
+Initialize engine version: 4.3.0f4 (e01000627d60)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [igdumdx32.dll 8.15.10.2342]
+    Renderer: Intel(R) HD Graphics Family
+    Vendor:   Intel
+    VRAM:     880 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\minmin2\minmin\minmin2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\minmin2\minmin\minmin2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\minmin2\minmin\minmin2_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\minmin2\minmin\minmin2_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\minmin2\minmin\minmin2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\minmin2\minmin\minmin2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\minmin2\minmin\minmin2_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading D:\minmin2\minmin\minmin2_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.053 seconds
+desktop: 1280x768 60Hz; virtual: 1280x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+UnloadTime: 7.440705 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1442.
+Total: 2.458511 ms (FindLiveObjects: 0.184734 ms CreateObjectMapping: 0.088262 ms MarkObjects: 0.554204 ms  DeleteObjects: 0.127774 ms)
+
+UnloadTime: 13.049458 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1447.
+Total: 2.303026 ms (FindLiveObjects: 0.182168 ms CreateObjectMapping: 0.124695 ms MarkObjects: 0.625532 ms  DeleteObjects: 0.114432 ms)
+
+COLLISIONENTEROVRPlayerController collided with boulderat a magnitude of 5.935027
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+UnloadTime: 11.674723 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1444.
+Total: 2.378459 ms (FindLiveObjects: 0.190892 ms CreateObjectMapping: 0.130853 ms MarkObjects: 0.617835 ms  DeleteObjects: 0.120590 ms)
+
+UnloadTime: 12.076521 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1445.
+Total: 2.372815 ms (FindLiveObjects: 0.178063 ms CreateObjectMapping: 0.127774 ms MarkObjects: 0.626045 ms  DeleteObjects: 0.112380 ms)
+
+UnloadTime: 12.378767 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1446.
+Total: 2.443117 ms (FindLiveObjects: 0.183708 ms CreateObjectMapping: 0.151379 ms MarkObjects: 0.671716 ms  DeleteObjects: 0.112893 ms)
+
+UnloadTime: 10.965546 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1447.
+Total: 2.200396 ms (FindLiveObjects: 0.159590 ms CreateObjectMapping: 0.134958 ms MarkObjects: 0.636821 ms  DeleteObjects: 0.163695 ms)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 12.988392 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1424.
+Total: 2.506747 ms (FindLiveObjects: 0.186274 ms CreateObjectMapping: 0.163695 ms MarkObjects: 0.740478 ms  DeleteObjects: 0.112893 ms)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 4.763077 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1354.
+Total: 2.370762 ms (FindLiveObjects: 0.170366 ms CreateObjectMapping: 0.088262 ms MarkObjects: 0.758438 ms  DeleteObjects: 0.112893 ms)
+
+Hit a flames
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 9.221855 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1351.
+Total: 2.354341 ms (FindLiveObjects: 0.147787 ms CreateObjectMapping: 0.094419 ms MarkObjects: 0.722518 ms  DeleteObjects: 0.152406 ms)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 8.833400 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1475.
+Total: 2.643246 ms (FindLiveObjects: 0.186787 ms CreateObjectMapping: 0.188326 ms MarkObjects: 0.894424 ms  DeleteObjects: 0.112380 ms)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 11.087677 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1476.
+Total: 2.621180 ms (FindLiveObjects: 0.186274 ms CreateObjectMapping: 0.182168 ms MarkObjects: 0.831306 ms  DeleteObjects: 0.111867 ms)
+
+COLLISIONENTEROVRPlayerController collided with boulderat a magnitude of 5.70036
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 12.272545 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1473.
+Total: 2.386670 ms (FindLiveObjects: 0.164721 ms CreateObjectMapping: 0.166774 ms MarkObjects: 0.828227 ms  DeleteObjects: 0.106735 ms)
+
+Hit a flames
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 6.417993 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1474.
+Total: 2.844915 ms (FindLiveObjects: 0.192432 ms CreateObjectMapping: 0.202181 ms MarkObjects: 0.960107 ms  DeleteObjects: 0.228352 ms)
+
+Hit a flames
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 11.446370 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1475.
+Total: 2.740745 ms (FindLiveObjects: 0.197050 ms CreateObjectMapping: 0.112893 ms MarkObjects: 1.007830 ms  DeleteObjects: 0.116998 ms)
+
+Hit a flames
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 8.007225 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1480.
+Total: 2.796678 ms (FindLiveObjects: 0.183708 ms CreateObjectMapping: 0.153432 ms MarkObjects: 1.015014 ms  DeleteObjects: 0.119051 ms)
+
+Level '' (4) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 292)
+
+Hit a flames
+ 
+(Filename: C:/BuildAgent/work/d3d49558e4d408f4/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 53)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1699)
+
+UnloadTime: 6.633003 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 1477.
+Total: 2.473906 ms (FindLiveObjects: 0.165234 ms CreateObjectMapping: 0.156511 ms MarkObjects: 0.931884 ms  DeleteObjects: 0.108788 ms)
+
+HandleD3DDeviceLost
+  HandleD3DDeviceLost: needs reset, doing it
+FullResetD3DDevice
+ResetD3DDevice
+dev->Reset
+D3Dwindow device not lost anymore

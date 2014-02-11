@@ -32,13 +32,6 @@ public class Player : MonoBehaviour {
 		else */ 
 		if (obj.name == "Door") {
 			MasterController.endGame (true, null);
-		} else if (obj.name == "flames" || obj.name == "Small explosion") {
-			MasterController.endGame(false,"You have been burned by flames! Stay away from fires next time."); 
-			Debug.Log("Hit a " + obj.name);
-		} else if (obj.name == "Cross") {
-			Destroy(obj);
-			MasterController.ShowMessage("Picked up a First Aid Kit! Time + 10");
-			LevelCountdown.AddTime(10);
 		} else if (obj.name == "Window") {
 			MasterController.endGame (false, "Oops. Stay away from windows during an earthquake or fire!");
 		} else if (obj.name == "tableUnder") {
@@ -50,5 +43,17 @@ public class Player : MonoBehaviour {
 			LevelCountdown.AddTime(-1);
 		}
     }
+
+	void OnTriggerEnter(Collider other) {
+		GameObject obj = other.gameObject;
+		if (obj.name == "Cross") {
+			Destroy(obj);
+			MasterController.ShowMessage("Picked up a First Aid Kit! Time + 10");
+			LevelCountdown.AddTime(10);
+		} else if (obj.name == "flames" || obj.name == "Small explosion") {
+			MasterController.endGame(false,"You have been burned by flames! Stay away from fires next time."); 
+			Debug.Log("Hit a " + obj.name);
+		}
+	}
 
 }

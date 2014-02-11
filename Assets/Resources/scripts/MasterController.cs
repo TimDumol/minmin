@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MasterController : MonoBehaviour {
-	const float MSG_WIDTH = 0.4f;
+	const float MSG_WIDTH = 0.15f;
 	const float MSG_HEIGHT = 0.2f;	
 	public static GameState state = GameState.STARTED;
 	static string endMessage = null;
@@ -18,7 +18,7 @@ public class MasterController : MonoBehaviour {
 		{
 			state = GameState.LOST;
 		}
-		Time.timeScale = 0;
+		//Time.timeScale = 0;
 		MasterController.endMessage = endMessage;
 	}
 
@@ -52,35 +52,46 @@ public class MasterController : MonoBehaviour {
 		GUILayout.Label (GetEndGameMessage ());
 		int currentLevel = Application.loadedLevel;
 		if (state == GameState.LOST) {
-			if (GUILayout.Button ("Restart")) {
+			GUILayout.Label ("Press R to restart");
+			if (Input.GetKeyDown(KeyCode.R)) {
 					Application.LoadLevel (currentLevel);
 					state = GameState.STARTED;
 					Time.timeScale = 1;
 			}
 		}
 		else if (state == GameState.WON) {
-			if (GUILayout.Button ("Next Level")) {
+			GUILayout.Label ("Press R to restart");
+			GUILayout.Label ("Press Enter to go to the next level");
+			if (Input.GetKeyDown (KeyCode.Return)) {
 				Application.LoadLevel(currentLevel+1);
 				state = GameState.STARTED;
 				Time.timeScale =1;
 			}
-			if (GUILayout.Button ("Restart")) {
+			if (Input.GetKeyDown(KeyCode.R)) {
 				Application.LoadLevel (currentLevel);
 				state = GameState.STARTED;
 				Time.timeScale = 1;
 			}
 		}
-		LevelCountdown.timerInSeconds = 60;
+		LevelCountdown.timerInSeconds = 50;
 		GUILayout.EndVertical ();
 	}
 
 	void OnGUI() {
 		if (state != GameState.STARTED) {
-		GUILayout.Window (0, new Rect((Screen.width - Screen.width * MSG_WIDTH)/2.0f, (Screen.height - Screen.height * MSG_HEIGHT)/2.0f, Screen.width * MSG_WIDTH, Screen.height * MSG_HEIGHT),
-			        EndGameWindow, "");
+			float baseX = (Screen.width - Screen.width * MSG_WIDTH)/4.0f;
+			float baseY = (Screen.height - Screen.height * MSG_HEIGHT)/4.0f;
+
+			GUILayout.Window (0, new Rect(baseX,baseY, Screen.width * MSG_WIDTH, Screen.height * MSG_HEIGHT),
+				        EndGameWindow, "");
+			GUILayout.Window (1, new Rect(0.4f*Screen.width + baseX,baseY, Screen.width * MSG_WIDTH, Screen.height * MSG_HEIGHT),
+			                  EndGameWindow, "");
 		}
 		else if (showMsg) {
-			GUI.Label(new Rect(100,100,200,100),msgText);
+			const float baseX = 150f;
+			const float baseY = 150f;
+			GUI.Label(new Rect(baseX,baseY,200,100),msgText);
+			GUI.Label(new Rect(0.4f*Screen.width + baseX,baseY,200,100),msgText);
 			StartCoroutine(TakeABreak());
 		}
 	}

@@ -11,9 +11,9 @@ GameObject[] flames;
 		flames = new GameObject[NUMBER_OF_FLAMES];
 
 		for (int x = 0; x < NUMBER_OF_FLAMES; x++) {
-			flames[x] = Resources.Load ("flames") as GameObject;
+			flames[x] = Resources.Load ("prefab/flames") as GameObject;
 			print ("Created" + flames[x].name);
-		}
+		}	
 		spreadFire (); 
 	}
 	
@@ -25,4 +25,3 @@ GameObject[] flames;
 		}	
 	}
 }
-	

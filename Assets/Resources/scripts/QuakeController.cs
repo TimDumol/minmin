@@ -4,8 +4,8 @@ using System.Collections;
 public class QuakeController : MonoBehaviour {
 
 	const int TICKS_PER_SHAKE = 30;
-	const float INTENSITY = 9f;
-	const float SHAKEINTENSITY = 9f;
+	const float INTENSITY = 30f;
+	const float SHAKEINTENSITY = 10f;
 	int tick_num;
 
 	// Use this for initialization

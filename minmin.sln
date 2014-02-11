@@ -5,6 +5,8 @@ Project("{4735A0C4-D1B1-1F62-EA44-115D54A93087}") = "minmin", "Assembly-CSharp-f
 EndProject
 Project("{4735A0C4-D1B1-1F62-EA44-115D54A93087}") = "minmin", "Assembly-CSharp.csproj", "{D870FDFF-B712-90DE-FC32-FC85E07992C5}"
 EndProject
+Project("{4735A0C4-D1B1-1F62-EA44-115D54A93087}") = "minmin", "Assembly-CSharp-Editor.csproj", "{7C4C751D-5A67-428B-D6BD-B8A5960C1FF5}"
+EndProject
 Project("{4735A0C4-D1B1-1F62-EA44-115D54A93087}") = "minmin", "Assembly-UnityScript-firstpass.unityproj", "{76456A98-C652-CEDE-5C1D-4FA1B3E6A893}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{D870FDFF-B712-90DE-FC32-FC85E07992C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D870FDFF-B712-90DE-FC32-FC85E07992C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D870FDFF-B712-90DE-FC32-FC85E07992C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4C751D-5A67-428B-D6BD-B8A5960C1FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4C751D-5A67-428B-D6BD-B8A5960C1FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4C751D-5A67-428B-D6BD-B8A5960C1FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4C751D-5A67-428B-D6BD-B8A5960C1FF5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76456A98-C652-CEDE-5C1D-4FA1B3E6A893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76456A98-C652-CEDE-5C1D-4FA1B3E6A893}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76456A98-C652-CEDE-5C1D-4FA1B3E6A893}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,7 +35,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																											GlobalSection(MonoDevelopProperties) = preSolution
+																																																															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
