@@ -18,7 +18,7 @@ public class MasterController : MonoBehaviour {
 		{
 			state = GameState.LOST;
 		}
-		//Time.timeScale = 0;
+		Time.timeScale = 0;
 		MasterController.endMessage = endMessage;
 	}
 
@@ -89,7 +89,7 @@ public class MasterController : MonoBehaviour {
 		}
 		else if (showMsg) {
 			const float baseX = 150f;
-			const float baseY = 150f;
+			const float baseY = 100f;
 			GUI.Label(new Rect(baseX,baseY,200,100),msgText);
 			GUI.Label(new Rect(0.4f*Screen.width + baseX,baseY,200,100),msgText);
 			StartCoroutine(TakeABreak());
