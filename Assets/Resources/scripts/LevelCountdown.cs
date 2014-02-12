@@ -18,7 +18,7 @@ public class LevelCountdown : MonoBehaviour {
 	public GUIStyle progress_empty;
 	public GUIStyle progress_full;
 	Vector2 pos = new Vector2(150,150);
-	Vector2 size = new Vector2(250,50);
+	Vector2 size = new Vector2(0.1f,0.03f);
 
 	//TEXTURES
 	public Texture2D emptyTex;
@@ -58,19 +58,19 @@ public class LevelCountdown : MonoBehaviour {
 	void OnGUI() {
 		if (MasterController.state == GameState.STARTED) {
 
-			GUI.BeginGroup(new Rect(pos.x, pos.y, size.x, size.y), emptyTex, progress_empty);	
-			GUI.Box(new Rect(pos.x, pos.y, size.x, size.y), fullTex, progress_full);
+			GUI.BeginGroup(new Rect(pos.x, pos.y, size.x*Screen.width, size.y*Screen.height), emptyTex, progress_empty);	
+			GUI.Box(new Rect(pos.x, pos.y, size.x*Screen.width, size.y*Screen.height), fullTex, progress_full);
 			//draw the filled-in part:
-			GUI.BeginGroup(new Rect(0, 0, size.x * barDisplay, size.y));
-			GUI.Box(new Rect(0, 0, size.x, size.y), fullTex, progress_full);
+			GUI.BeginGroup(new Rect(0, 0, size.x*Screen.width*barDisplay, size.y*Screen.height));
+			GUI.Box(new Rect(0, 0, size.x*Screen.width, size.y*Screen.height), fullTex, progress_full);
 			GUI.EndGroup();
 			GUI.EndGroup();
 
-			GUI.BeginGroup(new Rect(pos.x+0.4f*Screen.width, pos.y, size.x, size.y), emptyTex, progress_empty);	
-			GUI.Box(new Rect(pos.x+0.4f*Screen.width, pos.y, size.x, size.y), fullTex, progress_full);
+			GUI.BeginGroup(new Rect(pos.x+0.4f*Screen.width, pos.y, size.x*Screen.width, size.y*Screen.height), emptyTex, progress_empty);	
+			GUI.Box(new Rect(pos.x+0.4f*Screen.width, pos.y, size.x*Screen.width, size.y*Screen.height), fullTex, progress_full);
 			//draw the filled-in part:
-			GUI.BeginGroup(new Rect(0, 0, size.x * barDisplay, size.y));
-			GUI.Box(new Rect(0, 0, size.x, size.y), fullTex, progress_full);
+			GUI.BeginGroup(new Rect(0, 0, size.x*Screen.width*barDisplay, size.y*Screen.height));
+			GUI.Box(new Rect(0, 0, size.x*Screen.width, size.y*Screen.height), fullTex, progress_full);
 			GUI.EndGroup();
 			GUI.EndGroup();
 

@@ -11,14 +11,12 @@ public class OnImpact : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(thumpAudio, transform.position); 
 
 		} 
-		Debug.Log ("Collided with" + obj.name);
 
 	}
 
 	void OnCollisionEnter(Collision collision) {
 		GameObject obj = collision.gameObject;
 		AudioSource.PlayClipAtPoint(thumpAudio, transform.position); 
-		Debug.Log ("Collided with" + obj.name);
 
 	}
 }

@@ -46,9 +46,14 @@ public class Player : MonoBehaviour {
 			Destroy(obj);
 			MasterController.ShowMessage("Picked up a First Aid Kit! Time + 15");
 			LevelCountdown.AddTime(15);
-		} else if (obj.name == "flames" || obj.name == "Small explosion") {
+		}
+	}
+
+	void OnParticleCollision(GameObject other) {
+		GameObject obj = other.gameObject;
+		if (obj.CompareTag("Fire")  || obj.transform.parent.gameObject.CompareTag("Fire")) {
 			MasterController.ShowMessage("Stay away from fires!!!");
-			LevelCountdown.AddTime(-10);
+			LevelCountdown.AddTime(-1f);
 		} 
 	}
 

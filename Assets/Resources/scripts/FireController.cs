@@ -2,26 +2,39 @@
 using System.Collections;
 
 public class FireController : MonoBehaviour {
-	
-const int NUMBER_OF_FLAMES = 5;
-const int FLOOR_DISTANCE = 15;
-GameObject[] flames;
-	//Instantiates Flames
-	void Start () {
-		flames = new GameObject[NUMBER_OF_FLAMES];
+	const int TICKS_PER_INCREASE = 20;
+	const float EMISSION_INCREASE_FACTOR = 1.01f; // how the amt of particles increase per tick
+	const float ENERGY_INCREASE_FACTOR = 1.01f; // how the duration of the particles increase per tick
+	const float RND_VEL_FACTOR = 1.01f; // multiplier for random velocity added to particles per tick
+	const float RND_VEL_RATE = 0.25f; // addend for random velocity added to particles per tick;
+	const int MAX_FIRES = 25;
 
-		for (int x = 0; x < NUMBER_OF_FLAMES; x++) {
-			flames[x] = Resources.Load ("prefab/flames") as GameObject;
-			print ("Created" + flames[x].name);
-		}	
-		spreadFire (); 
-	}
+
+	int tick_num;
 	
-	void spreadFire() {	
-		for (int x = 0; x< NUMBER_OF_FLAMES; x++) {
-			Instantiate(flames[x]);
-			Debug.Log ("Instantiated" + flames[x].name);
-			flames[x].transform.position = new Vector3 (Random.Range (-FLOOR_DISTANCE, FLOOR_DISTANCE), 0, Random.Range (-FLOOR_DISTANCE, FLOOR_DISTANCE));
-		}	
+	// Use this for initialization
+	void Start () {
+		tick_num = 1;
+	}
+
+	
+	void FixedUpdate() {
+		if (tick_num == 0) {
+			GameObject[] fires = GameObject.FindGameObjectsWithTag("Fire");
+			int nFires = fires.Length;
+			foreach (GameObject fire in fires) {
+				foreach (ParticleEmitter emitter in fire.GetComponentsInChildren<ParticleEmitter>() ) {
+					emitter.maxEnergy *= 1.01f;
+					emitter.minEnergy *= 1.01f;
+					emitter.maxEmission *= 1.01f;
+					emitter.minEmission *= 1.01f;
+					Vector3 rndVel = emitter.rndVelocity;
+					rndVel.x = rndVel.x*1.01f + 0.25f;
+					rndVel.z = rndVel.z*1.01f + 0.25f;
+					emitter.rndVelocity = rndVel;
+				}
+			}
+		}
+		tick_num = (tick_num + 1) % TICKS_PER_INCREASE;
 	}
 }
