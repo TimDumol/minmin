@@ -68,6 +68,7 @@
      <Compile Include="Assets\Resources\scripts\GameState.cs" />
      <Compile Include="Assets\Resources\scripts\LevelCountdown.cs" />
      <Compile Include="Assets\Resources\scripts\MasterController.cs" />
+     <Compile Include="Assets\Resources\scripts\OnImpact.cs" />
      <Compile Include="Assets\Resources\scripts\Player.cs" />
      <Compile Include="Assets\Resources\scripts\QuakeController.cs" />
      <Compile Include="Assets\Resources\scripts\Rotation.cs" />

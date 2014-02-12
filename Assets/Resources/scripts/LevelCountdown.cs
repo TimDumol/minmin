@@ -6,29 +6,33 @@ using System.Collections;
  */
 
 public class LevelCountdown : MonoBehaviour {
-	
+
+	//CONSTANTS
+	const float TOTAL_HEALTH = 30f;
+
+	//VARIABLES
+	public static float timerInSeconds;
+
+	//HEALTH BAR
+	public float barDisplay;
 	public GUIStyle progress_empty;
 	public GUIStyle progress_full;
-	const float TOTAL_HEALTH = 50f;
-	
-	//current progress
-	public float barDisplay;
-	
 	Vector2 pos = new Vector2(150,150);
 	Vector2 size = new Vector2(250,50);
 
-	//Textures for healthbar
+	//TEXTURES
 	public Texture2D emptyTex;
 	public Texture2D fullTex;
-
-	public static float timerInSeconds;
+	
+	//SOUNDS
+	public AudioClip gameOverAudio;
 	
 	void Start () {
 		timerInSeconds = TOTAL_HEALTH;
 		InvokeRepeating ("Countdown", 1.0f, 1.0f);
 	}
 
-	public static void AddTime (int time) {
+	public static void AddTime (float time) {
 		if (timerInSeconds + time > TOTAL_HEALTH) { 
 			timerInSeconds = TOTAL_HEALTH;
 		} 
@@ -40,6 +44,7 @@ public class LevelCountdown : MonoBehaviour {
 	void Countdown() {
 		if (--timerInSeconds <= 0) {
 			CancelInvoke ("Countdown");
+			AudioSource.PlayClipAtPoint(gameOverAudio, transform.position, 3.0f); 
 			MasterController.endGame(false, null);
 		}
 	}

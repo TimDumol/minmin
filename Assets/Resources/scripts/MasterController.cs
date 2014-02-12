@@ -2,11 +2,14 @@
 using System.Collections;
 
 public class MasterController : MonoBehaviour {
+
+	//CONSTANTS
 	const float MSG_WIDTH = 0.15f;
 	const float MSG_HEIGHT = 0.2f;	
+
+	//VARIABLES
 	public static GameState state = GameState.STARTED;
 	static string endMessage = null;
-
 	static bool showMsg = false;
 	static string msgText = "";
 
@@ -21,8 +24,7 @@ public class MasterController : MonoBehaviour {
 		Time.timeScale = 0;
 		MasterController.endMessage = endMessage;
 	}
-
-
+	
 	public static string GetEndGameMessage() {
 		string message;
 		if (state == GameState.WON) {
@@ -36,6 +38,7 @@ public class MasterController : MonoBehaviour {
         }
 		return message;
     }
+
     // Use this for initialization
 	void Start () {
 		/**Temporary commenting this out for tomorrow.
