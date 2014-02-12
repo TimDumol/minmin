@@ -36,11 +36,10 @@ public class Player : MonoBehaviour {
 			MasterController.endGame (false, "Oops. Stay away from windows during an earthquake or fire!");
 		} else if (obj.name == "tableUnder") {
 			Destroy (obj);
-			MasterController.ShowMessage("Protected yourself from falling debris by hiding under a table! Time +3");
-			LevelCountdown.AddTime (3);
+			MasterController.ShowMessage("Protected yourself from falling debris by hiding under a table!");
+			LevelCountdown.AddTime (5);
 		} else if (obj.name == "shelfCube") {
-			MasterController.ShowMessage("Stay away from shelves! Stuff might fall on you! Time -1");
-			LevelCountdown.AddTime(-1);
+			MasterController.ShowMessage("Stay away from shelves! Stuff might fall on you!");
 		}
     }
 
@@ -51,9 +50,9 @@ public class Player : MonoBehaviour {
 			MasterController.ShowMessage("Picked up a First Aid Kit! Time + 10");
 			LevelCountdown.AddTime(10);
 		} else if (obj.name == "flames" || obj.name == "Small explosion") {
-			MasterController.endGame(false,"You have been burned by flames! Stay away from fires next time."); 
-			Debug.Log("Hit a " + obj.name);
-		}
+			MasterController.ShowMessage("Stay away from fires!!!");
+			LevelCountdown.AddTime(-10);
+		} 
 	}
 
 }

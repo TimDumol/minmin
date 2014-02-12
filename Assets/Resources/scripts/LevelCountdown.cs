@@ -40,7 +40,7 @@ public class LevelCountdown : MonoBehaviour {
 	void Countdown() {
 		if (--timerInSeconds <= 0) {
 			CancelInvoke ("Countdown");
-			MasterController.endGame(false, "Time's up! Hurry up next time!");
+			MasterController.endGame(false, null);
 		}
 	}
 
