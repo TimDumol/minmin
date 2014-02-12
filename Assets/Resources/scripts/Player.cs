@@ -51,7 +51,11 @@ public class Player : MonoBehaviour {
 
 	void OnParticleCollision(GameObject other) {
 		GameObject obj = other.gameObject;
-		if (obj.CompareTag("Fire")  || obj.transform.parent.gameObject.CompareTag("Fire")) {
+		bool isFire = obj.CompareTag("Fire");
+		if (!isFire && obj.transform.parent != null) {
+			isFire =  obj.transform.parent.gameObject.CompareTag("Fire");
+		}
+		if (isFire) {
 			MasterController.ShowMessage("Stay away from fires!!!");
 			LevelCountdown.AddTime(-1f);
 		} 
