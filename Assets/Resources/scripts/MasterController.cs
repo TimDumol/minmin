@@ -13,6 +13,8 @@ public class MasterController : MonoBehaviour {
 	static bool showMsg = false;
 	static string msgText = "";
 
+	public AudioClip youve_escaped;
+
 	public static void endGame(bool win, string endMessage) {
 		if (win) 
 		{

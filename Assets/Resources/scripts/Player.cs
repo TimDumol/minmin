@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Player : MonoBehaviour {
 	//CONSTANTS
@@ -10,12 +11,20 @@ public class Player : MonoBehaviour {
 	public AudioClip gameOverAudio;
 	public AudioClip nextLevelAudio;
 
+	public AudioClip do_not_use_the_elevator;
+	public AudioClip picked_up_a_first_aid_kit;
+	public AudioClip protected_yourself;
+	public AudioClip stay_away_from_fires;
+	public AudioClip stay_away_from_windows;
+	public AudioClip you_have_been_crushed_by_falling;
+
 	void OnCollisionEnter(Collision collision) {
 		GameObject obj = collision.gameObject;
 		Vector3 relativeVelocityVector = collision.relativeVelocity;
 		if (relativeVelocityVector.sqrMagnitude > 5) {
 			AudioSource.PlayClipAtPoint(gameOverAudio, transform.position, 3.0f); 
-			MasterController.endGame (false, "You have been crushed by falling objects.");
+			AudioSource.PlayClipAtPoint(you_have_been_crushed_by_falling, transform.position, 2.0f); 
+			MasterController.endGame (false, "");
 		}
 	}
 
@@ -25,29 +34,32 @@ public class Player : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(nextLevelAudio, transform.position, 2.0f); 
 			MasterController.endGame (true, null);
 		} else if (obj.name == "Window") {
+
 			AudioSource.PlayClipAtPoint(gameOverAudio, transform.position, 3.0f); 
-			MasterController.endGame (false, "Oops. Stay away from windows during an earthquake or fire!");
+			AudioSource.PlayClipAtPoint(stay_away_from_windows, transform.position, 2.0f); 
+			MasterController.endGame (false, "");
 		} else if (obj.name == "tableUnder") {
 			AudioSource.PlayClipAtPoint(successAudio, transform.position); 
 			Destroy (obj);
-			MasterController.ShowMessage("Protected yourself from falling debris by hiding under a table! Time +10");
+			AudioSource.PlayClipAtPoint(protected_yourself, transform.position, 3.0f); 
+			MasterController.ShowMessage("");
 			LevelCountdown.AddTime (10);
-		} else if (obj.name == "shelfCube") {
-			MasterController.ShowMessage("Stay away from shelves! Stuff might fall on you!");
-			LevelCountdown.AddTime (-0.5f);
-		
 		}
     }
-
+	
 	void OnTriggerEnter(Collider other) {
 		GameObject obj = other.gameObject;
 		if (obj.name == "Cross") {
 			AudioSource.PlayClipAtPoint(successAudio, transform.position); 
 			Destroy(obj);
-			MasterController.ShowMessage("Picked up a First Aid Kit! Time + 15");
+
+			AudioSource.PlayClipAtPoint(picked_up_a_first_aid_kit, transform.position, 1.0f); 
+			MasterController.ShowMessage("");
 			LevelCountdown.AddTime(15);
 		}
 	}
+
+	DateTime lastFire = new DateTime(0);
 
 	void OnParticleCollision(GameObject other) {
 		GameObject obj = other.gameObject;
@@ -56,7 +68,16 @@ public class Player : MonoBehaviour {
 			isFire =  obj.transform.parent.gameObject.CompareTag("Fire");
 		}
 		if (isFire) {
-			MasterController.ShowMessage("Stay away from fires!!!");
+			DateTime now = DateTime.Now;
+			AudioSource fireAudioSource = GetComponent<AudioSource>();
+			if ((now - lastFire).Seconds >= 1) {
+				if (!fireAudioSource.isPlaying) {
+					fireAudioSource.Play();
+				}
+			}
+			lastFire = now;
+
+			MasterController.ShowMessage("");
 			LevelCountdown.AddTime(-1f);
 		} 
 	}
