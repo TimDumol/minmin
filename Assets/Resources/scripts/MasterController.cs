@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MasterController : MonoBehaviour {
 
@@ -22,6 +23,7 @@ public class MasterController : MonoBehaviour {
 			state = GameState.LOST;
 		}
 		Time.timeScale = 0;
+		Player.Reset ();
 		MasterController.endMessage = endMessage;
 	}
 	
@@ -99,14 +101,19 @@ public class MasterController : MonoBehaviour {
 		}
 	}
 
+	static DateTime lastMessageShow = new DateTime(0);
+
 	public static void ShowMessage (string msg) {
 		msgText = msg;
 		showMsg = true;
+		lastMessageShow = DateTime.Now ;
 	}
 
 	static IEnumerator TakeABreak() {
 		yield return new WaitForSeconds (2);
-		showMsg = false;
+		if ((DateTime.Now - lastMessageShow).Seconds >= 2 - 1e-3) {
+			showMsg = false;
+		}
 		yield break;
 	}
 	

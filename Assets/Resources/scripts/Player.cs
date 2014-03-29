@@ -4,11 +4,47 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	//CONSTANTS
 	const float SPEED = 6;
+	const float FIRE_THRESHOLD = 0.5f;
+	const float SHAKE_THRESHOLD = 15f;
+	const float SHAKE_TIMES_THRESHOLD = 4f;
 
+	static float fireCounter = 0f;
+	static float shakeCounter = 0f;
+	static Quaternion lastRotation = new Quaternion ();
 	//SOUNDS
 	public AudioClip successAudio;
 	public AudioClip gameOverAudio;
 	public AudioClip nextLevelAudio;
+
+	public static void Reset() {
+		fireCounter = shakeCounter = 0f;
+		lastRotation = new Quaternion ();
+	}
+
+	void Update() {
+		if (fireCounter >= FIRE_THRESHOLD) {
+			MasterController.ShowMessage("You are on fire! Get out of danger, then stop, drop, and roll! (Shake your head!)");
+		}
+	}
+
+	void FixedUpdate() {
+		if (fireCounter >= FIRE_THRESHOLD) {
+			// Trigger fire damage
+			LevelCountdown.AddTime(-5e-2f);
+
+			// Handle shaking mechanism
+			Quaternion rot = transform.Find ("Main Camera").gameObject.transform.rotation;
+			float angle = Mathf.Abs(Quaternion.Angle(rot,lastRotation));
+			if (angle >= SHAKE_THRESHOLD) {
+				shakeCounter += 1;
+				if (shakeCounter >= SHAKE_TIMES_THRESHOLD) {
+					fireCounter = 0f;
+					shakeCounter = 0f;
+				}
+			}
+			lastRotation = rot;
+		}
+	}
 
 	void OnCollisionEnter(Collision collision) {
 		GameObject obj = collision.gameObject;
@@ -58,7 +94,8 @@ public class Player : MonoBehaviour {
 		if (isFire) {
 			MasterController.ShowMessage("Stay away from fires!!!");
 			LevelCountdown.AddTime(-1f);
-		} 
+			fireCounter += 1;
+		}
 	}
 
 }
