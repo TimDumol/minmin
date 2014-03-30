@@ -29,8 +29,8 @@ public class FireController : MonoBehaviour {
 					emitter.maxEmission *= 1.01f;
 					emitter.minEmission *= 1.01f;
 					Vector3 rndVel = emitter.rndVelocity;
-					rndVel.x = rndVel.x*1.01f + 0.25f;
-					rndVel.z = rndVel.z*1.01f + 0.25f;
+					rndVel.x = rndVel.x*1.005f + 0.2f;
+					rndVel.z = rndVel.z*1.005f + 0.2f;
 					emitter.rndVelocity = rndVel;
 				}
 			}
