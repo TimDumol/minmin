@@ -70,6 +70,7 @@
      <Compile Include="Assets\Resources\scripts\MasterController.cs" />
      <Compile Include="Assets\Resources\scripts\OnImpact.cs" />
      <Compile Include="Assets\Resources\scripts\Player.cs" />
+     <Compile Include="Assets\Resources\scripts\Quake.cs" />
      <Compile Include="Assets\Resources\scripts\QuakeController.cs" />
      <Compile Include="Assets\Resources\scripts\Rotation.cs" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />

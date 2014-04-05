@@ -3,9 +3,9 @@ using System.Collections;
 
 public class QuakeController : MonoBehaviour {
 
-	const int TICKS_PER_SHAKE = 30;
-	const float INTENSITY = 30f;
-	const float SHAKEINTENSITY = 10f;
+	const int TICKS_PER_SHAKE = 24;
+	const float INTENSITY = 20f;
+	const float SHAKEINTENSITY = 20f;
 	int tick_num;
 
 	// Use this for initialization
@@ -18,23 +18,38 @@ public class QuakeController : MonoBehaviour {
 
 	}
 
+	Vector3 RandomVector( float range ){
+		float x = Random.Range ( -range, range );
+		float y = Random.Range ( -range, range );
+		float z = Random.Range ( -range, range );
+		return new Vector3( x, y, z );
+	}
+
+	void FloorShake(){
+	}
+
 	void FixedUpdate() {
 		if (tick_num == 0) {
+			FloorShake();
+			/*
 			GameObject[] objects = GameObject.FindGameObjectsWithTag("SceneObject");
 			GameObject[] shakeObjects = GameObject.FindGameObjectsWithTag("ShakeSceneObject");
 
-			Vector3 vectorForShakeObject = new Vector3(Random.Range (-SHAKEINTENSITY, SHAKEINTENSITY), Random.Range (-SHAKEINTENSITY, SHAKEINTENSITY), Random.Range(-SHAKEINTENSITY,SHAKEINTENSITY)/6.0f);
+
 
 			foreach (GameObject obj in objects) {
 				obj.transform.parent.rigidbody.velocity = Vector3.zero;
-				obj.transform.parent.rigidbody.AddForce(new Vector3(Random.Range (-INTENSITY, INTENSITY), Random.Range (-INTENSITY, INTENSITY), Random.Range (-INTENSITY, INTENSITY)/6.0f), ForceMode.Impulse);
+				obj.transform.parent.rigidbody.AddForce(RandomVector (INTENSITY), ForceMode.Impulse);
 			}
+
 
 			foreach (GameObject sObj in shakeObjects) {
 				sObj.transform.parent.rigidbody.velocity = Vector3.zero;
-
+				Vector3 vectorForShakeObject = RandomVector (SHAKEINTENSITY);
 				sObj.transform.parent.rigidbody.AddForce(vectorForShakeObject, ForceMode.Impulse);
 			}
+			*/
+
 		}
 		tick_num = (tick_num + 1) % TICKS_PER_SHAKE;
 	}
