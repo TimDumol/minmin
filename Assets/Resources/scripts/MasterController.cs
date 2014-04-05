@@ -95,7 +95,7 @@ public class MasterController : MonoBehaviour {
 			                  EndGameWindow, "");
 		}
 		else if (showMsg) {
-			const float baseX = 150f;
+			const float baseX = 250f;
 			const float baseY = 100f;
 			GUI.Label(new Rect(baseX,baseY,200,100),msgText);
 			GUI.Label(new Rect(0.4f*Screen.width + baseX,baseY,200,100),msgText);

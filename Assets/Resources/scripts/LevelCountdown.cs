@@ -57,7 +57,6 @@ public class LevelCountdown : MonoBehaviour {
 
 	void OnGUI() {
 		if (MasterController.state == GameState.STARTED) {
-
 			GUI.BeginGroup(new Rect(pos.x, pos.y, size.x*Screen.width, size.y*Screen.height), emptyTex, progress_empty);	
 			GUI.Box(new Rect(pos.x, pos.y, size.x*Screen.width, size.y*Screen.height), fullTex, progress_full);
 			//draw the filled-in part:

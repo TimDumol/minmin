@@ -24,13 +24,13 @@ public class FireController : MonoBehaviour {
 			int nFires = fires.Length;
 			foreach (GameObject fire in fires) {
 				foreach (ParticleEmitter emitter in fire.GetComponentsInChildren<ParticleEmitter>() ) {
-					emitter.maxEnergy *= 1.01f;
-					emitter.minEnergy *= 1.01f;
-					emitter.maxEmission *= 1.01f;
-					emitter.minEmission *= 1.01f;
+					emitter.maxEnergy *= 1.005f;
+					emitter.minEnergy *= 1.005f;
+					emitter.maxEmission *= 1.005f;
+					emitter.minEmission *= 1.005f;
 					Vector3 rndVel = emitter.rndVelocity;
-					rndVel.x = rndVel.x*1.005f + 0.2f;
-					rndVel.z = rndVel.z*1.005f + 0.2f;
+					rndVel.x = rndVel.x*1.005f + 0.1f;
+					rndVel.z = rndVel.z*1.005f + 0.1f;
 					emitter.rndVelocity = rndVel;
 				}
 			}
