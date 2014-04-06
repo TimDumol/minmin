@@ -45,13 +45,6 @@ public class MasterController : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-		/**Temporary commenting this out for tomorrow.
-		 * GameObject boulder = Resources.Load ("Assets/prefab/boulder") as GameObject;
-		for (int i = 0; i < 20; ++i) {
-			GameObject copy = Instantiate (boulder) as GameObject;
-			copy.transform.position = new Vector3(Random.Range (-20, 20), Random.Range (5, 10), Random.Range(-20, 20));
-		}
-		 */
 	}
 	
 	void EndGameWindow(int windowId) {
