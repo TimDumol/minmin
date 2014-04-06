@@ -21,16 +21,16 @@ public class FireController : MonoBehaviour {
 	void FixedUpdate() {
 		if (tick_num == 0) {
 			GameObject[] fires = GameObject.FindGameObjectsWithTag("Fire");
-			int nFires = fires.Length;
+			//int nFires = fires.Length;
 			foreach (GameObject fire in fires) {
 				foreach (ParticleEmitter emitter in fire.GetComponentsInChildren<ParticleEmitter>() ) {
-					emitter.maxEnergy *= 1.005f;
-					emitter.minEnergy *= 1.005f;
-					emitter.maxEmission *= 1.005f;
-					emitter.minEmission *= 1.005f;
+					emitter.maxEnergy *= 1.01f;
+					emitter.minEnergy *= 1.01f;
+					emitter.maxEmission *= 1.01f;
+					emitter.minEmission *= 1.01f;
 					Vector3 rndVel = emitter.rndVelocity;
-					rndVel.x = rndVel.x*1.005f + 0.1f;
-					rndVel.z = rndVel.z*1.005f + 0.1f;
+					rndVel.x = rndVel.x*1.01f + 0.25f;
+					rndVel.z = rndVel.z*1.01f + 0.25f;
 					emitter.rndVelocity = rndVel;
 				}
 			}
