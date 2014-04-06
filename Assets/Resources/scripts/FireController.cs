@@ -21,7 +21,7 @@ public class FireController : MonoBehaviour {
 	void FixedUpdate() {
 		if (tick_num == 0) {
 			GameObject[] fires = GameObject.FindGameObjectsWithTag("Fire");
-			int nFires = fires.Length;
+			//int nFires = fires.Length;
 			foreach (GameObject fire in fires) {
 				foreach (ParticleEmitter emitter in fire.GetComponentsInChildren<ParticleEmitter>() ) {
 					emitter.maxEnergy *= 1.01f;

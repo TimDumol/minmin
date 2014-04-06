@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
 	public AudioClip you_have_been_crushed_by_falling;
 
 	void OnCollisionEnter(Collision collision) {
-		GameObject obj = collision.gameObject;
+		//GameObject obj = collision.gameObject;
 		Vector3 relativeVelocityVector = collision.relativeVelocity;
 		if (relativeVelocityVector.sqrMagnitude > 5) {
 			AudioSource.PlayClipAtPoint(gameOverAudio, transform.position, 3.0f); 
