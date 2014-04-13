@@ -29,8 +29,6 @@ public class QuakeController : MonoBehaviour {
 			GameObject[] objects = GameObject.FindGameObjectsWithTag("SceneObject");
 			GameObject[] shakeObjects = GameObject.FindGameObjectsWithTag("ShakeSceneObject");
 
-
-
 			/*foreach (GameObject obj in objects) {
 				obj.transform.parent.rigidbody.velocity = Vector3.zero;
 				obj.transform.parent.rigidbody.AddForce(RandomVector (INTENSITY), ForceMode.Impulse);
