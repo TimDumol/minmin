@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 public class Quake : MonoBehaviour
 {
-    public static float INTENSITY = 45f;
-    public static int TICKS_PER_FRAME = 20;
+    public static float INTENSITY = 60f;
+    public static int TICKS_PER_SHAKE = 5;
+    public static int SHAKE_TICKS= 120;
+    public static int REST_TICKS = 40;
     private int ticks;
     private GameObject floor;
     HashSet<ContactPoint> hs;
@@ -35,7 +37,7 @@ public class Quake : MonoBehaviour
                 continue;
             hs.Add (p);
         }
-        if (ticks == 0) {
+        if (ticks < SHAKE_TICKS && ticks % TICKS_PER_SHAKE == 0) {
             var forces = new Dictionary<GameObject, float> ();
             Vector3 r = RandomVector (INTENSITY);
             foreach (ContactPoint contact in hs) {
@@ -76,7 +78,7 @@ public class Quake : MonoBehaviour
 
     void FixedUpdate ()
     {
-        ticks = (ticks + 1) % TICKS_PER_FRAME;
+        ticks = (ticks + 1) % (SHAKE_TICKS + REST_TICKS);
     }
 
     void OnCollisionStay (Collision hit)
