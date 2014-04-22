@@ -5,9 +5,11 @@ public class Quake : MonoBehaviour
 {
     public static float INTENSITY = 60f;
     public static int TICKS_PER_SHAKE = 5;
-    public static int SHAKE_TICKS= 120;
+    public static int SHAKE_TICKS= 540;
     public static int REST_TICKS = 40;
 	public GameObject floor = null;
+
+    public AudioClip earthquakeAudio;
 	/*
 	public class CameraShake
 	{
@@ -90,6 +92,10 @@ public class Quake : MonoBehaviour
 
     void FixedUpdate ()
     {
+        if (ticks == 0) {
+            Player player = GameObject.FindObjectOfType<Player>();
+            AudioSource.PlayClipAtPoint(earthquakeAudio, player.transform.position);
+        }
         ticks = (ticks + 1) % (SHAKE_TICKS + REST_TICKS);
     }
 
