@@ -51,12 +51,16 @@ public class OVRPlayerController : OVRComponent
 	protected CharacterController 	Controller 		 = null;
 	protected OVRCameraController 	CameraController = null;
 
-	public float Acceleration 	   = 0.1f;
-	public float Damping 		   = 0.15f;
-	public float BackAndSideDampen = 0.5f;
-	public float JumpForce 		   = 0.3f;
+	public string[] ButtonsForJump = { "space", "joystick button 0" };
+
+	public float Acceleration 	   = 0.5f;
+	public float Damping 		   = 0.001f;
+	public float BackAndSideDampen = 1f;
+	public const float JumpForce   = 0.8f;
 	public float RotationAmount    = 1.5f;
-	public float GravityModifier   = 0.379f;
+	public float GravityModifier   = 1.0f;
+	public const float JumpScale   = 0.93f;
+
 		
 	private float   MoveScale 	   = 1.0f;
 	private Vector3 MoveThrottle   = Vector3.zero;
@@ -153,7 +157,7 @@ public class OVRPlayerController : OVRComponent
 		
 		float motorDamp = (1.0f + (Damping * DeltaTime));
 		MoveThrottle.x /= motorDamp;
-		MoveThrottle.y = (MoveThrottle.y > 0.0f) ? (MoveThrottle.y / motorDamp) : MoveThrottle.y;
+		MoveThrottle.y = ((MoveThrottle.y > 0.0f) ? (MoveThrottle.y / (motorDamp)) : MoveThrottle.y);
 		MoveThrottle.z /= motorDamp;
 
 		moveDirection += MoveThrottle * DeltaTime;
@@ -189,6 +193,8 @@ public class OVRPlayerController : OVRComponent
 		
 		// Update rotation using CameraController transform, possibly proving some rules for 
 		// sliding the rotation for a more natural movement and body visual
+
+
 		UpdatePlayerForwardDirTransform();
 	}
 		
@@ -202,19 +208,39 @@ public class OVRPlayerController : OVRComponent
 		// Do not apply input if we are showing a level selection display
 		if(HaltUpdateMovement == true)
 			return;
-	
+
+		// jumping
+		foreach (string s in ButtonsForJump) {
+			if( Input.GetKey (s) )
+				Jump ();
+		}
+
 		bool moveForward = false;
 		bool moveLeft  	 = false;
 		bool moveRight   = false;
 		bool moveBack    = false;
 				
 		MoveScale = 1.0f;
+
+
 			
 		// * * * * * * * * * * *
 		// Keyboard input
 			
 		// Move
-			
+
+		float right = Input.GetAxis ("Horizontal");
+		float up = Input.GetAxis ("Vertical");
+		if (right > 0)
+			moveRight = true;
+		if (right < 0)
+			moveLeft = true;
+		if (up > 0)
+			moveForward = true;
+		if (up < 0)
+			moveBack = true;
+
+		/*
 		// WASD
 		if (Input.GetKey(KeyCode.W)) moveForward = true;
 		if (Input.GetKey(KeyCode.A)) moveLeft	 = true;
@@ -230,15 +256,15 @@ public class OVRPlayerController : OVRComponent
 		if (OVRGamepadController.GPC_GetButton ((int)OVRGamepadController.Button.Left))		moveLeft	= true;
 		if (OVRGamepadController.GPC_GetButton ((int)OVRGamepadController.Button.Down))		moveBack	= true;
 		if (OVRGamepadController.GPC_GetButton ((int)OVRGamepadController.Button.Right))	moveRight	= true;
-
+		*/
 			
 		if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
 			 (moveBack && moveLeft)    || (moveBack && moveRight) )
 			MoveScale = 0.70710678f;
 			
 		// No positional movement if we are in the air
-		if (!Controller.isGrounded)	
-			MoveScale = 0.0f;
+		// if (!Controller.isGrounded)	
+			// MoveScale = 0.0f;
 			
 		MoveScale *= DeltaTime;
 			
@@ -354,12 +380,16 @@ public class OVRPlayerController : OVRComponent
 	///////////////////////////////////////////////////////////
 	
 	// Jump
+	
 	public bool Jump()
 	{
-		if (!Controller.isGrounded)
+		if (!Controller.isGrounded) {
+			// MoveThrottle += new Vector3 (0, JumpForce / JumpScale, 0);
+			FallSpeed = JumpScale * FallSpeed;
+			// Debug.Log ( MoveThrottle.y );
 			return false;
-
-		MoveThrottle += new Vector3(0, JumpForce, 0);
+		}
+		MoveThrottle += (new Vector3 (0, JumpForce, 0));
 
 		return true;
 	}
