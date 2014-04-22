@@ -3,11 +3,6 @@ using System.Collections;
 
 public class FireController : MonoBehaviour {
 	const int TICKS_PER_INCREASE = 20;
-	const float EMISSION_INCREASE_FACTOR = 1.01f; // how the amt of particles increase per tick
-	const float ENERGY_INCREASE_FACTOR = 1.01f; // how the duration of the particles increase per tick
-	const float RND_VEL_FACTOR = 1.01f; // multiplier for random velocity added to particles per tick
-	const float RND_VEL_RATE = 0.25f; // addend for random velocity added to particles per tick;
-	const int MAX_FIRES = 25;
 
 
 	int tick_num;
@@ -24,13 +19,14 @@ public class FireController : MonoBehaviour {
 			//int nFires = fires.Length;
 			foreach (GameObject fire in fires) {
 				foreach (ParticleEmitter emitter in fire.GetComponentsInChildren<ParticleEmitter>() ) {
-					emitter.maxEnergy *= 1.01f;
-					emitter.minEnergy *= 1.01f;
-					emitter.maxEmission *= 1.01f;
-					emitter.minEmission *= 1.01f;
+                    // Adjust the following constants as needed to change fire spread.
+					emitter.maxEnergy *= 1.002f;
+					emitter.minEnergy *= 1.002f;
+					emitter.maxEmission *= 1.002f;
+					emitter.minEmission *= 1.002f;
 					Vector3 rndVel = emitter.rndVelocity;
-					rndVel.x = rndVel.x*1.01f + 0.25f;
-					rndVel.z = rndVel.z*1.01f + 0.25f;
+					rndVel.x = rndVel.x*1.002f + 0.10f;
+					rndVel.z = rndVel.z*1.002f + 0.10f;
 					emitter.rndVelocity = rndVel;
 				}
 			}
