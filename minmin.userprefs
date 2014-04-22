@@ -1,0 +1,25 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js">
+    <Files>
+      <File FileName="Assets\Resources\scripts\Player.cs" Line="24" Column="12" />
+      <File FileName="Assets\Resources\scripts\DoorOpener.cs" Line="22" Column="2" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" Line="41" Column="43" />
+      <File FileName="Assets\OVR\Scripts\OVRGamepadController.cs" Line="135" Column="14" />
+      <File FileName="Assets\OVR\Scripts\OVRMainMenu.cs" Line="45" Column="63" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="17" Column="15" />
+      <File FileName="Assets\OVR\Scripts\OVRGUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\OVR\Scripts\OVRMagCalibration.cs" Line="17" Column="18" />
+      <File FileName="Assets\OVR\Scripts\OVRPlayerController.cs" Line="232" Column="101" />
+      <File FileName="Assets\OVR\Scripts\OVRPresetManager.cs" Line="20" Column="61" />
+      <File FileName="Assets\OVR\Scripts\OVRCamera.cs" Line="20" Column="61" />
+      <File FileName="Assets\OVR\Scripts\OVRCameraController.cs" Line="244" Column="34" />
+      <File FileName="Assets\OVR\Scripts\OVRComponent.cs" Line="47" Column="2" />
+      <File FileName="Assets\OVR\Scripts\OVRCrosshair.cs" Line="11" Column="31" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
