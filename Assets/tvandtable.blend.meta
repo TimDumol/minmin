@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 950fb5791f51a174487fbebba60c656d
+guid: 8e33083745bd4a741b0cbb03c9108057
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: BezierCurve
     100002: Circle_003
@@ -83,4 +83,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 49345910c606d2b4db890afeae0b40c3
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: Circle_003
     100002: Circle_004
@@ -73,4 +73,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 

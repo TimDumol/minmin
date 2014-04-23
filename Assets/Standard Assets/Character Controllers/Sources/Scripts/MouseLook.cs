@@ -40,7 +40,7 @@ public class MouseLook : MonoBehaviour {
 	{
 		float Xon = Mathf.Abs (Input.GetAxis ("Joy Mouse X"));
 		float Yon = Mathf.Abs (Input.GetAxis ("Joy Mouse Y"));
-		Debug.Log ( Input.GetAxis ("Joy Mouse X") );
+		// Debug.Log ( Input.GetAxis ("Joy Mouse X") );
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			// Read the mouse input axis
