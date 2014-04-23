@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DoorOpener : MonoBehaviour {
-
+public class BadDoor : MonoBehaviour {
+	
 	
 	// Smothly open a door
 	float smooth = 2.0f;
 	float DoorOpenAngle = 90.0f;
 	private bool open;
 	private bool enter;
-	public AudioClip doorOpeningAudio;
-
 	
 	private Vector3 defaultRot;
 	private Vector3 openRot;
+
+	public AudioClip ouchHotDoorAudio;
+
 	
 	void Start() {
 		defaultRot = transform.eulerAngles;
@@ -24,12 +25,15 @@ public class DoorOpener : MonoBehaviour {
 	void Update () {
 		if(open){
 			transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
+
 		} else{
 			transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
 		}
 		// if(Input.GetKeyDown("f") && enter){
 		if( enter && MainControls.Check ( MasterController.Key.OpenDoor ) ){
 			open = !open;
+			LevelCountdown.AddTime(-5);
+			AudioSource.PlayClipAtPoint(ouchHotDoorAudio, transform.position, 1); 
 		}
 	}
 	
