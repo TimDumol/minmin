@@ -28,7 +28,7 @@ public class DoorOpener : MonoBehaviour {
 			transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
 		}
 		// if(Input.GetKeyDown("f") && enter){
-		if( enter && MainControls.Check ( MasterController.Key.OpenDoor ) ){
+		if( enter && MainControls.Check ( MainControls.Key.OpenDoor ) ){
 			open = !open;
 		}
 	}

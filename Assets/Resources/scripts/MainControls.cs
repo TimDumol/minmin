@@ -4,12 +4,16 @@ using System.Collections.Generic;
 
 public class MainControls : MonoBehaviour {
 
+	// Add new Keys here
+
+	public enum Key { Restart, OpenDoor, NextLevel, Jump, Crouch };
 
 	public static Dictionary <string, string> Xbox = new Dictionary<string, string>();
-	public static Dictionary <MasterController.Key, string[]> KeyStrings = new Dictionary<MasterController.Key, string[]>();
+	public static Dictionary <MainControls.Key, string[]> KeyStrings = new Dictionary<MainControls.Key, string[]>();
 
 	// Use this for initialization
 	void Start () {
+
 		Xbox.Clear ();
 		KeyStrings.Clear ();
 
@@ -22,13 +26,20 @@ public class MainControls : MonoBehaviour {
 		}
 
 
-		KeyStrings.Add ( MasterController.Key.Restart, new string[]{ "r", Xbox["x"] } );
-		KeyStrings.Add ( MasterController.Key.OpenDoor, new string[]{ "f", Xbox["a"] } );
-		KeyStrings.Add ( MasterController.Key.NextLevel, new string[]{ "return", Xbox["a"] } );
-		KeyStrings.Add ( MasterController.Key.Jump, new string[]{ "space", Xbox["b"] } );
+		KeyStrings.Add ( Key.Restart, new string[]{ "r", Xbox["x"] } );
+		KeyStrings.Add ( Key.OpenDoor, new string[]{ "f", Xbox["a"] } );
+		KeyStrings.Add ( Key.NextLevel, new string[]{ "return", Xbox["a"] } );
+		KeyStrings.Add ( Key.Jump, new string[]{ "space", Xbox["b"] } );
+		KeyStrings.Add ( Key.Crouch, new string[]{ "c", Xbox["rstick"] } );
+
+		// KeyStrings.Add ( Key.*****, new string[]{ ****, ****, ... } )
+
 	}
 
-	public static bool Check( MasterController.Key k ){
+	// to use:
+	// if( MainControls.Check( MainControls.Key.Restart ) ) ...
+
+	public static bool Check( Key k ){
 		// Debug.Log (k.ToString () + (int)k);
 		if (KeyStrings.ContainsKey (k)) {
 			if( Input.GetKeyDown ( KeyCode.JoystickButton2 ) ) Debug.Log ( "GG" );
