@@ -40,14 +40,14 @@ public class MainControls : MonoBehaviour {
 	// to use:
 	// if( MainControls.Check( MainControls.Key.Restart ) ) ...
 
-	public static bool Check( Key k ){
+	public static bool Check( Key k, bool downOnly = true ){
 		// Debug.Log (k.ToString () + (int)k);
 		if (KeyStrings.ContainsKey (k)) {
-			if( Input.GetKeyDown ( KeyCode.JoystickButton2 ) ) Debug.Log ( "GG" );
 			foreach (string s in KeyStrings[k]) {
-
 				if (Input.GetKeyDown (s))
-						return true;
+					return true;
+				if( !downOnly && Input.GetKey (s) )
+					return true;
 			}
 		}
 		return false;

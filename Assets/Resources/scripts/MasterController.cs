@@ -55,22 +55,22 @@ public class MasterController : MonoBehaviour {
 		int currentLevel = Application.loadedLevel;
 		if (state == GameState.LOST) {
 			GUILayout.Label ("Press X (key R) to restart");
-			if (MainControls.Check(MainControls.Key.Restart)) {
-					Application.LoadLevel (currentLevel);
-					state = GameState.STARTED;
-					Time.timeScale = 1;
+			if (MainControls.Check(MainControls.Key.Restart,false)) {
+				Application.LoadLevel (currentLevel);
+				state = GameState.STARTED;
+				Time.timeScale = 1;
 			}
 		}
 		else if (state == GameState.WON) {
 			GUILayout.Label ("Press X (key R) to restart");
 			GUILayout.Label ("Press A (key Enter) to go to the next level");
 			// if (Input.GetKeyDown (KeyCode.Return)) {
-			if (MainControls.Check(MainControls.Key.NextLevel)) {
+			if (MainControls.Check(MainControls.Key.NextLevel,false)) {
 				Application.LoadLevel(currentLevel+1);
 				state = GameState.STARTED;
 				Time.timeScale =1;
 			}
-			if (MainControls.Check(MainControls.Key.Restart)) {
+			if (MainControls.Check(MainControls.Key.Restart,false)) {
 				Application.LoadLevel (currentLevel);
 				state = GameState.STARTED;
 				Time.timeScale = 1;

@@ -43,51 +43,54 @@ public class Quake : MonoBehaviour
 
     void collide (Collision hit)
     {
-        foreach (ContactPoint p in hit.contacts) {
-			try{
-            if (hs.Contains (p))
-                continue;
-            hs.Add (p);
-			}
-			catch{}
-        }
-        if (ticks < SHAKE_TICKS && ticks % TICKS_PER_SHAKE == 0) {
-            var forces = new Dictionary<GameObject, float> ();
-            Vector3 r = RandomVector (INTENSITY);
-            foreach (ContactPoint contact in hs) {
-                GameObject obj = null;
-                if (contact.thisCollider.gameObject == floor) {
-                    obj = contact.otherCollider.gameObject;
-                } else if (contact.otherCollider.gameObject == floor) {
-                    obj = contact.thisCollider.gameObject;
-                }
-                if (obj == null) {
-                    // Debug.Log ( "(" + id + ") " + "No floor found!" );
-                    continue;
-                }
-                if (!forces.ContainsKey(obj)) {
-                    forces[obj] = 0;
-                }
-                forces[obj] += 1;
+		try{
+	        foreach (ContactPoint p in hit.contacts) {
+				try{
+	            if (hs.Contains (p))
+	                continue;
+	            hs.Add (p);
+				}
+				catch{}
+	        }
+	        if (ticks < SHAKE_TICKS && ticks % TICKS_PER_SHAKE == 0) {
+	            var forces = new Dictionary<GameObject, float> ();
+	            Vector3 r = RandomVector (INTENSITY);
+	            foreach (ContactPoint contact in hs) {
+	                GameObject obj = null;
+	                if (contact.thisCollider.gameObject == floor) {
+	                    obj = contact.otherCollider.gameObject;
+	                } else if (contact.otherCollider.gameObject == floor) {
+	                    obj = contact.thisCollider.gameObject;
+	                }
+	                if (obj == null) {
+	                    // Debug.Log ( "(" + id + ") " + "No floor found!" );
+	                    continue;
+	                }
+	                if (!forces.ContainsKey(obj)) {
+	                    forces[obj] = 0;
+	                }
+	                forces[obj] += 1;
 
-            }  
-            foreach (GameObject obj in forces.Keys) {
-                var force = forces[obj];
-                try {
-                    obj.transform.transform.rigidbody.velocity = Vector3.zero;
-                    obj.transform.transform.rigidbody.AddForce (r/10, ForceMode.Impulse);
+	            }  
+	            foreach (GameObject obj in forces.Keys) {
+	                var force = forces[obj];
+	                try {
+	                    obj.transform.transform.rigidbody.velocity = Vector3.zero;
+	                    obj.transform.transform.rigidbody.AddForce (r/10, ForceMode.Impulse);
 
-                } catch {
-                    try {
-                        obj.transform.parent.transform.rigidbody.velocity = Vector3.zero;
-                        obj.transform.parent.transform.rigidbody.AddForce (r, ForceMode.Impulse);
-                    } catch {
-                        // Debug.Log ( "(" + id + ") " + "Error " + obj.ToString () );
-                    }
-                }
-            }
-            hs.Clear ();
-        }
+	                } catch {
+	                    try {
+	                        obj.transform.parent.transform.rigidbody.velocity = Vector3.zero;
+	                        obj.transform.parent.transform.rigidbody.AddForce (r, ForceMode.Impulse);
+	                    } catch {
+	                        // Debug.Log ( "(" + id + ") " + "Error " + obj.ToString () );
+	                    }
+	                }
+	            }
+	            hs.Clear ();
+	        }
+		}
+		catch {}
     }
 
     void FixedUpdate ()
