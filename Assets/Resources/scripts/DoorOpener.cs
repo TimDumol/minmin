@@ -9,6 +9,8 @@ public class DoorOpener : MonoBehaviour {
 	float DoorOpenAngle = 90.0f;
 	private bool open;
 	private bool enter;
+	public AudioClip doorOpeningAudio;
+
 	
 	private Vector3 defaultRot;
 	private Vector3 openRot;
