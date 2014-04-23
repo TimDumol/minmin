@@ -123,13 +123,13 @@ public class OVRGamepadController : MonoBehaviour
 	void Start()
     {
 		GPC_Available = GPC_Initialize();
+		// GPC_Test ();
     }
 	
 	// Update
     void Update()
     {
 		GPC_Available = GPC_Update();
-		// GPC_Test();
     }
 	
 	// OnDestroy

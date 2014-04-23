@@ -42,6 +42,8 @@ using System.Collections;
 //
 public class OVRMainMenu : MonoBehaviour
 {
+	public KeyCode DEFAULT_MENU_BUTTON = KeyCode.JoystickButton7;
+
 	private OVRPresetManager	PresetManager 	= new OVRPresetManager();
 	
 	public float 	FadeInTime    		= 2.0f;
@@ -733,7 +735,7 @@ public class OVRMainMenu : MonoBehaviour
 	// GUIShowVRVariables
 	void GUIShowVRVariables()
 	{
-		bool SpaceHit = Input.GetKey("space");
+		bool SpaceHit = Input.GetKey( DEFAULT_MENU_BUTTON );
 		if ((OldSpaceHit == false) && (SpaceHit == true))
 		{
 			if(ShowVRVars == true) 

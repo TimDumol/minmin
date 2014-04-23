@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 	public AudioClip stay_away_from_windows;
 	public AudioClip you_have_been_crushed_by_falling;
 
+	private bool isCrawling = false;
+
 	void OnCollisionEnter(Collision collision) {
 		//GameObject obj = collision.gameObject;
 		Vector3 relativeVelocityVector = collision.relativeVelocity;
@@ -80,6 +82,21 @@ public class Player : MonoBehaviour {
 			MasterController.ShowMessage("");
 			LevelCountdown.AddTime(-1f);
 		} 
+	}
+
+	void Start(){
+	}
+
+	void Update () {
+
+		if(Input.GetKeyDown("c") && isCrawling){
+			// this.transform.position += Vector3.up;
+			isCrawling = !isCrawling;
+		}
+		else if (Input.GetKeyDown("c") && !isCrawling) {
+			// this.transform.position += Vector3.down;
+			isCrawling = !isCrawling;
+		}
 	}
 
 }

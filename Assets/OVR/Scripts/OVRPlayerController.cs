@@ -225,6 +225,12 @@ public class OVRPlayerController : OVRComponent
 		if (Input.GetKey(KeyCode.LeftArrow))  moveLeft 	  = true;
 		if (Input.GetKey(KeyCode.DownArrow))  moveBack 	  = true; 
 		if (Input.GetKey(KeyCode.RightArrow)) moveRight   = true; 
+		// joystick
+		if (OVRGamepadController.GPC_GetButton ((int)OVRGamepadController.Button.Up))		moveForward	= true;
+		if (OVRGamepadController.GPC_GetButton ((int)OVRGamepadController.Button.Left))		moveLeft	= true;
+		if (OVRGamepadController.GPC_GetButton ((int)OVRGamepadController.Button.Down))		moveBack	= true;
+		if (OVRGamepadController.GPC_GetButton ((int)OVRGamepadController.Button.Right))	moveRight	= true;
+
 			
 		if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
 			 (moveBack && moveLeft)    || (moveBack && moveRight) )
@@ -301,11 +307,11 @@ public class OVRPlayerController : OVRComponent
 						
 			if(leftAxisY > 0.0f)
 	    		MoveThrottle += leftAxisY *
-				DirXform.TransformDirection(Vector3.forward * moveInfluence);
+				DirXform.TransformDirection(Vector3.forward * moveInfluence); // Vector3.forward
 				
 			if(leftAxisY < 0.0f)
 	    		MoveThrottle += Mathf.Abs(leftAxisY) *		
-				DirXform.TransformDirection(Vector3.back * moveInfluence) * BackAndSideDampen;
+				DirXform.TransformDirection(Vector3.back * moveInfluence) * BackAndSideDampen; // Vector3.back
 				
 			if(leftAxisX < 0.0f)
 	    		MoveThrottle += Mathf.Abs(leftAxisX) *

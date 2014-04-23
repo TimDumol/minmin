@@ -16,31 +16,45 @@ using System.Collections;
 ///   -> Set the mouse look to use LookY. (You want the camera to tilt up and down like a head. The character already turns.)
 [AddComponentMenu("Camera-Control/Mouse Look")]
 public class MouseLook : MonoBehaviour {
-
+	
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
 	public float sensitivityX = 15F;
 	public float sensitivityY = 15F;
-
+	
+	public float jsensitivityX = 1F;
+	public float jsensitivityY = 1F;
+	
 	public float minimumX = -360F;
 	public float maximumX = 360F;
-
+	
 	public float minimumY = -60F;
 	public float maximumY = 60F;
-
+	
 	float rotationX = 0F;
 	float rotationY = 0F;
 	
 	Quaternion originalRotation;
-
+	
 	void Update ()
 	{
+		float Xon = Mathf.Abs (Input.GetAxis ("Joy Mouse X"));
+		float Yon = Mathf.Abs (Input.GetAxis ("Joy Mouse Y"));
+		Debug.Log ( Input.GetAxis ("Joy Mouse X") );
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			// Read the mouse input axis
+			if( Xon > 0.5 ) {
+				
+				rotationX += Input.GetAxis ( "Joy Mouse X" ) * jsensitivityX;
+			}
+			if( Yon > 0.5 ){
+				rotationY += Input.GetAxis ( "Joy Mouse Y" ) * jsensitivityY;
+			}
+			
 			rotationX += Input.GetAxis("Mouse X") * sensitivityX;
 			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-
+			
 			rotationX = ClampAngle (rotationX, minimumX, maximumX);
 			rotationY = ClampAngle (rotationY, minimumY, maximumY);
 			
@@ -51,17 +65,23 @@ public class MouseLook : MonoBehaviour {
 		}
 		else if (axes == RotationAxes.MouseX)
 		{
+			if( Xon > 0.5 ) {
+				rotationX += Input.GetAxis ( "Joy Mouse X" ) * jsensitivityX;
+			}
 			rotationX += Input.GetAxis("Mouse X") * sensitivityX;
 			rotationX = ClampAngle (rotationX, minimumX, maximumX);
-
+			
 			Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
 			transform.localRotation = originalRotation * xQuaternion;
 		}
 		else
 		{
+			if( Yon > 0.5 ){
+				rotationY += Input.GetAxis ( "Joy Mouse Y" ) * jsensitivityY;
+			}
 			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
 			rotationY = ClampAngle (rotationY, minimumY, maximumY);
-
+			
 			Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, Vector3.left);
 			transform.localRotation = originalRotation * yQuaternion;
 		}
