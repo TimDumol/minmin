@@ -16,7 +16,7 @@ public class MasterController : MonoBehaviour {
 
 	public AudioClip youve_escaped;
 
-	public enum Key { Restart, OpenDoor, NextLevel, Jump };
+
 
 	public static void endGame(bool win, string endMessage) {
 		if (win) 
@@ -55,7 +55,7 @@ public class MasterController : MonoBehaviour {
 		int currentLevel = Application.loadedLevel;
 		if (state == GameState.LOST) {
 			GUILayout.Label ("Press X (key R) to restart");
-			if (MainControls.Check(Key.Restart)) {
+			if (MainControls.Check(MainControls.Key.Restart)) {
 					Application.LoadLevel (currentLevel);
 					state = GameState.STARTED;
 					Time.timeScale = 1;
@@ -65,12 +65,12 @@ public class MasterController : MonoBehaviour {
 			GUILayout.Label ("Press X (key R) to restart");
 			GUILayout.Label ("Press A (key Enter) to go to the next level");
 			// if (Input.GetKeyDown (KeyCode.Return)) {
-			if (MainControls.Check(Key.NextLevel)) {
+			if (MainControls.Check(MainControls.Key.NextLevel)) {
 				Application.LoadLevel(currentLevel+1);
 				state = GameState.STARTED;
 				Time.timeScale =1;
 			}
-			if (MainControls.Check(Key.Restart)) {
+			if (MainControls.Check(MainControls.Key.Restart)) {
 				Application.LoadLevel (currentLevel);
 				state = GameState.STARTED;
 				Time.timeScale = 1;

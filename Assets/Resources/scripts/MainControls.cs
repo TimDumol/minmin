@@ -4,31 +4,42 @@ using System.Collections.Generic;
 
 public class MainControls : MonoBehaviour {
 
-	/*
-	public static string[][] KeyStrings = new string[][]{
-		// Restart
-		new string[]{ "r", "joystick button 7" },
-		// Open Door
-		new string[]{ "f", "joystick button 0" },
-		// Next Level
-		new string[]{ "return", "joystick button 0" },
-		// Jump
-		new string[]{ "space", "joystick button 1" }
-	}
-	*/
+	// Add new Keys here
 
-	public static Dictionary <MasterController.Key, string[]> KeyStrings = new Dictionary<MasterController.Key, string[]>();
+	public enum Key { Restart, OpenDoor, NextLevel, Jump, Crouch };
+
+	public static Dictionary <string, string> Xbox = new Dictionary<string, string>();
+	public static Dictionary <MainControls.Key, string[]> KeyStrings = new Dictionary<MainControls.Key, string[]>();
 
 	// Use this for initialization
 	void Start () {
+
+		Xbox.Clear ();
 		KeyStrings.Clear ();
-		KeyStrings.Add ( MasterController.Key.Restart, new string[]{ "r", "joystick button 2" } );
-		KeyStrings.Add ( MasterController.Key.OpenDoor, new string[]{ "f", "joystick button 0" } );
-		KeyStrings.Add ( MasterController.Key.NextLevel, new string[]{ "return", "joystick button 0" } );
-		KeyStrings.Add ( MasterController.Key.Jump, new string[]{ "space", "joystick button 1" } );
+
+		string[] xboxStrings = {
+			"a", "b", "x", "y", "l", "r", "back", "start", "lstick", "rstick"
+		};
+
+		for( int i=0; i<xboxStrings.Length; ++i ){
+			Xbox[ xboxStrings[i] ] = "joystick button " + i;
+		}
+
+
+		KeyStrings.Add ( Key.Restart, new string[]{ "r", Xbox["x"] } );
+		KeyStrings.Add ( Key.OpenDoor, new string[]{ "f", Xbox["a"] } );
+		KeyStrings.Add ( Key.NextLevel, new string[]{ "return", Xbox["a"] } );
+		KeyStrings.Add ( Key.Jump, new string[]{ "space", Xbox["b"] } );
+		KeyStrings.Add ( Key.Crouch, new string[]{ "c", Xbox["rstick"] } );
+
+		// KeyStrings.Add ( Key.*****, new string[]{ ****, ****, ... } )
+
 	}
 
-	public static bool Check( MasterController.Key k ){
+	// to use:
+	// if( MainControls.Check( MainControls.Key.Restart ) ) ...
+
+	public static bool Check( Key k ){
 		// Debug.Log (k.ToString () + (int)k);
 		if (KeyStrings.ContainsKey (k)) {
 			if( Input.GetKeyDown ( KeyCode.JoystickButton2 ) ) Debug.Log ( "GG" );
