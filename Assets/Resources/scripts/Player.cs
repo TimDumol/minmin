@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
     void FixedUpdate() {
         if (fireCounter >= FIRE_THRESHOLD) {
             // Trigger fire damage
-            LevelCountdown.AddTime(-5e-2f);
+            HealthController.AddHealth(-5e-2f);
             
             // Handle shaking mechanism
             Quaternion rot = transform.Find ("Main Camera").gameObject.transform.rotation; // Change Main Camera to OVRCameraController for rift.
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour {
 			Destroy (obj);
 			AudioSource.PlayClipAtPoint(protected_yourself, transform.position, 3.0f); 
 			MasterController.ShowMessage("");
-			LevelCountdown.AddTime (10);
+			HealthController.AddHealth (10);
 		}
     }
 	
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour {
 
 			AudioSource.PlayClipAtPoint(picked_up_a_first_aid_kit, transform.position, 1.0f); 
 			MasterController.ShowMessage("");
-			LevelCountdown.AddTime(15);
+			HealthController.AddHealth(15);
 		}
 	}
 
@@ -115,13 +115,13 @@ public class Player : MonoBehaviour {
 			lastFire = now;
 
 			MasterController.ShowMessage("");
-			LevelCountdown.AddTime(-0.4f);
+			HealthController.AddHealth(-0.4f);
             fireCounter += 1;
 		}
 	}
 
 	void Start(){
-        fireIndicator = Resources.Load("prefab/FireIndicator") as GameObject;
+        fireIndicator = Resources.Load<GameObject>("prefab/FireIndicator");
 	}
 
 	void Update () {
