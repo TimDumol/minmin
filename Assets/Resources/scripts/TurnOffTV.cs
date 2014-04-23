@@ -23,7 +23,7 @@ public class TurnOffTV : MonoBehaviour {
 		if( isOn && inArea && MainControls.Check ( MainControls.Key.OpenDoor ) ){
 			myLight.enabled = !myLight.enabled;
 			renderer.material.mainTexture = theTVOff;
-			LevelCountdown.AddTime(20);
+			HealthController.AddHealth(20);
 			AudioSource.PlayClipAtPoint(successAudio, transform.position); 
 			isOn = false;
 	

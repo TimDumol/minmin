@@ -33,7 +33,9 @@ public class HealthController : MonoBehaviour
         OK
     }
 
-    private GameObject medHealthIndicator;
+    private Material medHealthMaterial;
+    private Material lowHealthMaterial;
+    private Material critHealthMaterial;
     private HealthStatus prevHealthStatus;
     private GameObject healthIndicatorInstance;
     
@@ -41,7 +43,10 @@ public class HealthController : MonoBehaviour
     {
         health = MAX_HEALTH;
         InvokeRepeating ("CheckHealth", 1.0f, 1.0f);
-        medHealthIndicator = Resources.Load<GameObject> ("prefabs/MedHealthIndicator");
+        medHealthMaterial = Resources.Load<Material> ("materials/med_health_indicator");
+        lowHealthMaterial = Resources.Load<Material> ("materials/low_health_indicator");
+        critHealthMaterial = Resources.Load<Material> ("materials/crit_health_indicator");
+        //Debug.Log (string.Format ("Medium health indicator: {0}", medHealthIndicator));
         healthIndicatorInstance = null;
         prevHealthStatus = HealthStatus.OK;
     }
@@ -49,18 +54,36 @@ public class HealthController : MonoBehaviour
     void Update ()
     {
         if (health <= MED_HEALTH) {
-            GameObject healthIndicator = medHealthIndicator;
+            Material healthMaterial = medHealthMaterial;
+            HealthStatus healthStatus = HealthStatus.MED;
+            if (health <= CRIT_HEALTH) {
+                healthMaterial = critHealthMaterial;
+                healthStatus = HealthStatus.CRIT;
+            } else if (health <= LOW_HEALTH) {
+                healthMaterial = lowHealthMaterial;
+                healthStatus = HealthStatus.LOW;
+            }
+            
 
-            Transform cameraTransform = transform.Find ("Main Camera").gameObject.transform; // Change Main Camera to OVRCameraController for rift.
-            // Materialize the fire indicator thing
+            Transform cameraTransform = Camera.main.gameObject.transform;
+
+            // Materialize the health indicator thing
             Vector3 indicatorPos = cameraTransform.position + cameraTransform.forward;
             Quaternion indicatorRot = cameraTransform.rotation;
+
             if (healthIndicatorInstance == null) {
-                healthIndicatorInstance = Instantiate (healthIndicator, indicatorPos, indicatorRot) as GameObject;
-            } else {
-                healthIndicatorInstance.transform.position = indicatorPos;
-                healthIndicatorInstance.transform.rotation = indicatorRot;
+                healthIndicatorInstance = GameObject.CreatePrimitive(PrimitiveType.Quad);
             }
+
+            if (prevHealthStatus != healthStatus) {
+                healthIndicatorInstance.renderer.material = healthMaterial;
+            }
+           
+            healthIndicatorInstance.transform.localScale = new Vector3(2f*Camera.main.aspect, 2f, 1f);
+            healthIndicatorInstance.transform.position = indicatorPos;
+            healthIndicatorInstance.transform.rotation = indicatorRot;
+
+            prevHealthStatus = healthStatus;
         } else {
             if (healthIndicatorInstance != null) {
                 Destroy (healthIndicatorInstance);
@@ -68,14 +91,15 @@ public class HealthController : MonoBehaviour
             }
             prevHealthStatus = HealthStatus.OK;
         }
+      
     }
 
-    public static void AddHealth (float health)
+    public static void AddHealth (float _health)
     {
-        if (health + health > MAX_HEALTH) { 
+        if (health + _health > MAX_HEALTH) { 
             health = MAX_HEALTH;
         } else {
-            health += health;
+            health += _health;
         }
     }
 

@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
             HealthController.AddHealth(-5e-2f);
             
             // Handle shaking mechanism
-            Quaternion rot = transform.Find ("Main Camera").gameObject.transform.rotation; // Change Main Camera to OVRCameraController for rift.
+            Quaternion rot = Camera.main.gameObject.transform.rotation;
             float angle = Mathf.Abs(Quaternion.Angle(rot,lastRotation));
             if (angle >= SHAKE_THRESHOLD) {
                 shakeCounter += 1;
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour {
         if (fireCounter >= FIRE_THRESHOLD) {
             MasterController.ShowMessage("You are on fire! Get out of danger, then stop, drop, and roll! (Shake your head!)");
 
-            Transform cameraTransform = transform.Find ("Main Camera").gameObject.transform; // Change Main Camera to OVRCameraController for rift.
+            Transform cameraTransform = Camera.main.gameObject.transform;
             // Materialize the fire indicator thing
             Vector3 indicatorPos = cameraTransform.position + cameraTransform.forward - 0.5f*cameraTransform.up;
             Quaternion indicatorRot = cameraTransform.rotation;
