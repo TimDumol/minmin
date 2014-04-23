@@ -6,7 +6,7 @@ public class MainControls : MonoBehaviour {
 
 	// Add new Keys here
 
-	public enum Key { Restart, OpenDoor, NextLevel, Jump, Crouch };
+	public enum Key { Restart, OpenDoor, NextLevel, Jump, Crouch, Pause };
 
 	public static Dictionary <string, string> Xbox = new Dictionary<string, string>();
 	public static Dictionary <MainControls.Key, string[]> KeyStrings = new Dictionary<MainControls.Key, string[]>();
@@ -31,6 +31,7 @@ public class MainControls : MonoBehaviour {
 		KeyStrings.Add ( Key.NextLevel, new string[]{ "return", Xbox["a"] } );
 		KeyStrings.Add ( Key.Jump, new string[]{ "space", Xbox["b"] } );
 		KeyStrings.Add ( Key.Crouch, new string[]{ "c", Xbox["rstick"] } );
+		KeyStrings.Add ( Key.Pause, new string[]{ "p", Xbox["start"] } );
 
 		// KeyStrings.Add ( Key.*****, new string[]{ ****, ****, ... } )
 
