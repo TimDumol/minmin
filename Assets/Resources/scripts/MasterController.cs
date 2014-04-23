@@ -76,7 +76,7 @@ public class MasterController : MonoBehaviour {
 				Time.timeScale = 1;
 			}
 		}
-		LevelCountdown.timerInSeconds = 50;
+		HealthController.health = 50;
 		GUILayout.EndVertical ();
 	}
 

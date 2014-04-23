@@ -32,7 +32,7 @@ public class BadDoor : MonoBehaviour {
 		// if(Input.GetKeyDown("f") && enter){
 		if( enter && MainControls.Check ( MainControls.Key.OpenDoor ) ){
 			open = !open;
-			LevelCountdown.AddTime(-5);
+			HealthController.AddHealth(-5);
 			AudioSource.PlayClipAtPoint(ouchHotDoorAudio, transform.position, 1); 
 		}
 	}
