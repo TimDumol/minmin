@@ -27,7 +27,7 @@ public class MasterController : MonoBehaviour {
 			state = GameState.LOST;
 		}
 		Time.timeScale = 0;
-		//Player.Reset ();
+	    Player.Reset ();
 		MasterController.endMessage = endMessage;
 	}
 	
