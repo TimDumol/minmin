@@ -3,17 +3,26 @@ using System.Collections.Generic;
 
 public class Quake : MonoBehaviour
 {
-    public static float INTENSITY = 45f;
-    public static int TICKS_PER_FRAME = 20;
+    public float INTENSITY = 45f;
+    public int TICKS_PER_FRAME = 20;
+	public GameObject floor = null;
+	/*
+	public class CameraShake
+	{
+		public bool Enabled;
+	}
+	*/
     private int ticks;
-    private GameObject floor;
+
     HashSet<ContactPoint> hs;
     // Use this for initialization
     void Start ()
     {
         hs = new HashSet<ContactPoint> ();
         ticks = 0;
-        floor = GameObject.FindGameObjectWithTag ("FloorShake");
+		if (floor == null)
+			floor = this.gameObject;
+        // floor = GameObject.FindGameObjectWithTag ("FloorShake");
 			
         Vector3 v = floor.transform.position;
         floor.transform.position = new Vector3 (v.x, v.y - 0.1f, v.z);
@@ -31,9 +40,12 @@ public class Quake : MonoBehaviour
     void collide (Collision hit)
     {
         foreach (ContactPoint p in hit.contacts) {
+			try{
             if (hs.Contains (p))
                 continue;
             hs.Add (p);
+			}
+			catch{}
         }
         if (ticks == 0) {
             var forces = new Dictionary<GameObject, float> ();
