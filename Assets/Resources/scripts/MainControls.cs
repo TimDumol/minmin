@@ -4,28 +4,28 @@ using System.Collections.Generic;
 
 public class MainControls : MonoBehaviour {
 
-	/*
-	public static string[][] KeyStrings = new string[][]{
-		// Restart
-		new string[]{ "r", "joystick button 7" },
-		// Open Door
-		new string[]{ "f", "joystick button 0" },
-		// Next Level
-		new string[]{ "return", "joystick button 0" },
-		// Jump
-		new string[]{ "space", "joystick button 1" }
-	}
-	*/
 
+	public static Dictionary <string, string> Xbox = new Dictionary<string, string>();
 	public static Dictionary <MasterController.Key, string[]> KeyStrings = new Dictionary<MasterController.Key, string[]>();
 
 	// Use this for initialization
 	void Start () {
+		Xbox.Clear ();
 		KeyStrings.Clear ();
-		KeyStrings.Add ( MasterController.Key.Restart, new string[]{ "r", "joystick button 2" } );
-		KeyStrings.Add ( MasterController.Key.OpenDoor, new string[]{ "f", "joystick button 0" } );
-		KeyStrings.Add ( MasterController.Key.NextLevel, new string[]{ "return", "joystick button 0" } );
-		KeyStrings.Add ( MasterController.Key.Jump, new string[]{ "space", "joystick button 1" } );
+
+		string[] xboxStrings = {
+			"a", "b", "x", "y", "l", "r", "back", "start", "lstick", "rstick"
+		};
+
+		for( int i=0; i<xboxStrings.Length; ++i ){
+			Xbox[ xboxStrings[i] ] = "joystick button " + i;
+		}
+
+
+		KeyStrings.Add ( MasterController.Key.Restart, new string[]{ "r", Xbox["x"] } );
+		KeyStrings.Add ( MasterController.Key.OpenDoor, new string[]{ "f", Xbox["a"] } );
+		KeyStrings.Add ( MasterController.Key.NextLevel, new string[]{ "return", Xbox["a"] } );
+		KeyStrings.Add ( MasterController.Key.Jump, new string[]{ "space", Xbox["b"] } );
 	}
 
 	public static bool Check( MasterController.Key k ){
