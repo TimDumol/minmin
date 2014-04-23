@@ -51,7 +51,7 @@ public class OVRPlayerController : OVRComponent
 	protected CharacterController 	Controller 		 = null;
 	protected OVRCameraController 	CameraController = null;
 
-	public string[] ButtonsForJump = { "space", "joystick button 0" };
+	public string[] ButtonsForJump;
 
 	public float Acceleration 	   = 0.5f;
 	public float Damping 		   = 0.001f;
@@ -59,7 +59,7 @@ public class OVRPlayerController : OVRComponent
 	public const float JumpForce   = 0.8f;
 	public float RotationAmount    = 1.5f;
 	public float GravityModifier   = 1.0f;
-	public const float JumpScale   = 0.93f;
+	public const float JumpScale   = 0.98f;
 
 		
 	private float   MoveScale 	   = 1.0f;
@@ -133,9 +133,9 @@ public class OVRPlayerController : OVRComponent
 	new public virtual void Start()
 	{
 		base.Start();
-		
 		InitializeInputs();	
 		SetCameras();
+		ButtonsForJump = new string[]{ "space", "joystick button 1" };
 	}
 		
 	// Update 
